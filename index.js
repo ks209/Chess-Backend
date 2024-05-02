@@ -5,6 +5,8 @@ const wss = new WebSocketServer({ port: 80 });
 
 const gamemanager = new gameManager();
 
+wss.on('error', console.error);
+
 wss.on('connection', function connection(ws) {
     gamemanager.addUser(ws)
     ws.off("close",()=>{
